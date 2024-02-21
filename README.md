@@ -1,40 +1,53 @@
-# DEfi Application
-
-This Solidity program is a simple "Hello World" program that demonstrates the basic syntax and functionality of the Solidity programming language. The purpose of this program is to serve as a starting point for those who are new to Solidity and want to get a feel for how it works.
+# Defi Application(My Atm)
 
 ## Description
 
-This program is a simple contract written in Solidity, a programming language used for developing smart contracts on the Ethereum blockchain. The contract has a single function that returns the string "Hello World!". This program serves as a simple and straightforward introduction to Solidity programming, and can be used as a stepping stone for more complex projects in the future.
+This Solidity program, named "My ATM," implements a simple ATM (Automated Teller Machine) functionality on the Ethereum blockchain. It allows users to deposit, withdraw, and transfer Ethereum (ETH) funds. The contract also provides functions to check the account balance. This program serves as a basic example of a decentralized finance (DeFi) application and can be used as a learning resource for understanding Solidity smart contract development.
 
 ## Getting Started
 
 ### Executing program
+To interact with the My ATM contract, you need to follow these steps:
 
-To run this program, you can use Remix, an online Solidity IDE. To get started, go to the Remix website at https://remix.ethereum.org/.
+Install MetaMask or any other Ethereum wallet extension in your browser.
 
-Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., HelloWorld.sol). Copy and paste the following code into the file:
+Access a web3-enabled browser such as Google Chrome or Mozilla Firefox.
 
+Visit a web application or website that integrates the My ATM contract.
+
+Connect your MetaMask wallet to the application by clicking on the connect button.
+
+Once connected, you can deposit, withdraw, and transfer ETH using the provided interface.
 ```javascript
-pragma solidity ^0.8.4;
-
-contract HelloWorld {
-    function sayHello() public pure returns (string memory) {
-        return "Hello World!";
+  //Tranfer Function
+  const transfer = async (receiver, amount) => {
+    if (atm) {
+      let tx = await atm.transfer(receiver, amount);
+      await tx.wait();
+      getBalance();
     }
-}
+  };
 
 ```
+To compile the project:
+After cloning the github, you will want to do the following to get the code running on your computer.
 
-To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.4" (or another compatible version), and then click on the "Compile HelloWorld.sol" button.
+1.Inside the project directory, in the terminal type: npm i
+2.Open two additional terminals in your VS code
+3.In the second terminal type: npx hardhat node
+4.In the third terminal, type: npx hardhat run --network localhost scripts/deploy.js
+5.Back in the first terminal, type npm run dev to launch the front-end.
+6.After this, the project will be running on your localhost. Typically at http://localhost:3000/
 
-Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "HelloWorld" contract from the dropdown menu, and then click on the "Deploy" button.
+![image](https://github.com/Mehak051003/AVX-assessment-2/assets/118992603/53ba0a23-265b-4a15-9535-1aae6288e83d)
 
-Once the contract is deployed, you can interact with it by calling the sayHello function. Click on the "HelloWorld" contract in the left-hand sidebar, and then click on the "sayHello" function. Finally, click on the "transact" button to execute the function and retrieve the "Hello World!" message.
+![image](https://github.com/Mehak051003/AVX-assessment-2/assets/118992603/bb3de14c-e3cf-4718-b885-c51523fc466d)
+
 
 ## Authors
 
-Metacrafter Chris  
-[@metacraftersio](https://twitter.com/metacraftersio)
+Mehak Thakur
+[mehakthakur051003@gmail.com]
 
 
 ## License
