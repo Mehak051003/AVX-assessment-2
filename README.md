@@ -18,26 +18,37 @@ Visit a web application or website that integrates the My ATM contract.
 Connect your MetaMask wallet to the application by clicking on the connect button.
 
 Once connected, you can deposit, withdraw, and transfer ETH using the provided interface.
-```javascript
+```solidity
   //Tranfer Function
-  const transfer = async (receiver, amount) => {
-    if (atm) {
-      let tx = await atm.transfer(receiver, amount);
-      await tx.wait();
-      getBalance();
+  function transfer(address _receiver, uint256 _amount) public
+   {
+        require(_receiver != address(0), "Invalid receiver address");
+        require(_receiver != owner, "Cannot transfer to owner");
+
+        uint256 _previousBalance = balance;
+        require(balance >= _amount, "Insufficient balance");
+
+        balance -= _amount;
+        payable(_receiver).transfer(_amount);
+
+        emit Transfer(msg.sender, _receiver, _amount);
     }
-  };
 
 ```
 To compile the project:
 After cloning the github, you will want to do the following to get the code running on your computer.
 
 1.Inside the project directory, in the terminal type: npm i
+
 2.Open two additional terminals in your VS code
+
 3.In the second terminal type: npx hardhat node
+
 4.In the third terminal, type: npx hardhat run --network localhost scripts/deploy.js
+
 5.Back in the first terminal, type npm run dev to launch the front-end.
-6.After this, the project will be running on your localhost. Typically at http://localhost:3000/
+
+After this, the project will be running on your localhost. Typically at http://localhost:3000/
 
 ![image](https://github.com/Mehak051003/AVX-assessment-2/assets/118992603/53ba0a23-265b-4a15-9535-1aae6288e83d)
 
